@@ -1,0 +1,19 @@
+curl --location --request POST 'localhost:3000/feedback' \
+--header 'Basic: Y29tcGFueTE6cGFzc3dvcmQ=' \
+--header 'Authorization: Basic Y29tcGFueTE6cGFzc3dvcmQ=' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "post_id": "209187",
+    "feedback_type": "conversation",
+    "feedback": "I was very pleased with the quality of the product and the speed of delivery!",
+    "source": "twitter",
+    "source_id": "34567",
+    "metadata": {
+        "country": "UK",
+        "user_handle": "@satisfiedbuyer",
+        "tweet_id": "654321"
+    },
+    "topic_id": "67890",
+    "language": "en",
+    "tenant_info": "ABC Corp."
+}'

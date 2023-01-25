@@ -1,0 +1,2 @@
+curl --location --request GET 'localhost:3000/feedback/63d0eb07806367e7c4b1e516' \
+--header 'Authorization: Basic Y29tcGFueTE6cGFzc3dvcmQ='

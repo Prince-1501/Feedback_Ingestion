@@ -1,0 +1,2 @@
+curl --location -g --request GET 'localhost:3000/feedback/67890/posts.json?post_ids[]=568792' \
+--header 'Authorization: Basic Y29tcGFueTE6cGFzc3dvcmQ='

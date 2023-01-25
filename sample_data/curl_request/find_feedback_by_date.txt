@@ -1,0 +1,2 @@
+curl --location --request GET 'localhost:3000/feedback/query/search.json?q=after%3A2022-01-25+before%3A2023-01-26' \
+--header 'Authorization: Basic Y29tcGFueTE6cGFzc3dvcmQ='
