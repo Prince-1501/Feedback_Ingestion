@@ -18,7 +18,7 @@ passport.use(new BasicStrategy((username, password, done) => {
   // Verify tenant credentials
   if (username === 'company1' && password === 'password') {  /* We can also Implement a Separate Database for this Tenants or Users */
       return done(null, { id: username });
-  } else {
+  }else {
       return done(null, false);
   }
 }));
