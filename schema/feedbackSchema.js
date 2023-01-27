@@ -62,7 +62,6 @@ const checkDuplicateFeedbackRecord = async (feedbackData) => {
     try{
         // Generate a unique identifier for the feedback record
         const hash = crypto.createHash('sha256').update(JSON.stringify(feedbackData)).digest('hex');
-        console.log(`hash ${hash}`);
         const existingRecord = await Feedback.findOne({hash: hash});
         const data = {
             hashValue: hash,

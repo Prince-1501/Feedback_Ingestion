@@ -31,14 +31,12 @@ app.post('/feedback', passport.authenticate('basic', { session: false }), async(
     
     /* Idempotency - check for duplicate feedback records before storing them */
     const existingRecord = await feedback.checkDuplicateFeedbackRecord(feedbackData);
-    console.log(`JSON: ${JSON.stringify(existingRecord)}`);
     if(existingRecord.records ){
        res.status(200).send('Feedback already received');
        return;
     }
     feedbackData.hash = existingRecord.hashValue;
     
-    console.log('forward loops still in progress');
     const transformedData = await transformFeedbackData(feedbackData);
     await feedback.createFeedback(transformedData);
     res.status(200).send('Feedback received');
@@ -50,9 +48,7 @@ app.post('/feedback', passport.authenticate('basic', { session: false }), async(
 /* Read the Feedback */
 app.get('/feedback/:feedbackId', passport.authenticate('basic', { session: false }), async(req,res)=>{
   try{
-    console.log('Feedback service is available');
     const feedbackId = req.params.feedbackId;
-    console.log(`Feedback service is available ${feedbackId}`);
     const tenant_id = req.user.id;
     const data = await feedback.readFeedback(feedbackId, tenant_id);
     res.status(200).send(data);
@@ -63,7 +59,6 @@ app.get('/feedback/:feedbackId', passport.authenticate('basic', { session: false
 
 app.get('/feedback/:topic_id/posts.json', passport.authenticate('basic', { session: false }), async(req, res)=>{
   try{
-    console.log('feedback topic id');
     const topic_id = req.params.topic_id;
     const post_ids = req.query.post_ids;
     const data = await feedback.findFeedbackByTopicID(topic_id, post_ids);
